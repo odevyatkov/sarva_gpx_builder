@@ -1,0 +1,46 @@
+{
+  "name": "savra_gpx_builder",
+  "version": "1.0.0",
+  "description": "gpx builder for SAVRA",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node --extensions '.ts' ./src/index.ts",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odevyatkov/savra_gpx_builder.git"
+  },
+  "keywords": [
+    "SAVRA",
+    "gpx"
+  ],
+  "author": "oleksandr devyatkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/odevyatkov/savra_gpx_builder/issues"
+  },
+  "homepage": "https://github.com/odevyatkov/savra_gpx_builder#readme",
+  "dependencies": {
+    "@babel/core": "7.9.6",
+    "@babel/node": "7.8.7",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-export-default-from": "7.8.3",
+    "@babel/plugin-proposal-export-namespace-from": "7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.9.6",
+    "@babel/plugin-proposal-optional-chaining": "7.9.0",
+    "@babel/plugin-transform-arrow-functions": "7.8.3",
+    "@babel/plugin-transform-runtime": "7.9.6",
+    "@babel/plugin-transform-typeof-symbol": "7.8.4",
+    "@babel/plugin-transform-typescript": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-typescript": "7.9.0",
+    "@turf/destination": "6.0.1",
+    "@turf/point-grid": "6.0.1",
+    "@types/node": "14.0.5",
+    "@types/yargs": "15.0.5",
+    "gpx-builder": "3.0.0",
+    "typescript": "3.9.3",
+    "yargs": "15.3.1"
+  }
+}
