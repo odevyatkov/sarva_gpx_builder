@@ -1,19 +1,19 @@
-# savra_gpx_builder
+# SARVA gpx builder
 
 
 ## install without ssh key (over https)
 
 ```sh
-$ git clone https://github.com/odevyatkov/savra_gpx_builder.git
-$ cd savra_gpx_builder
+$ git clone https://github.com/odevyatkov/sarva_gpx_builder.git
+$ cd sarva_gpx_builder
 $ npm ci
 ```
 
 ## install with ssh key
 
 ```sh
-$ git clone git@github.com:odevyatkov/savra_gpx_builder.git
-$ cd savra_gpx_builder
+$ git clone git@github.com:odevyatkov/sarva_gpx_builder.git
+$ cd sarva_gpx_builder
 $ npm ci
 ```
 
