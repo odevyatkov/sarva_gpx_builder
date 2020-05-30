@@ -6,6 +6,8 @@ import {
   GarminBuilder,
 } from 'gpx-builder';
 import Bounds from 'gpx-builder/dist/builder/BaseBuilder/models/Bounds';
+import Copyright from 'gpx-builder/dist/builder/BaseBuilder/models/Copyright';
+import packageInfo from '../../package.json';
 
 const {
   Point,
@@ -25,8 +27,9 @@ export default function buildGpx(
       time: new Date(),
     });
   });
+  const copyright = new Copyright(`${packageInfo.name} v${packageInfo.version}`, {});
   const meta = new Metadata({
-    name: '',
+    copyright,
     time: new Date(),
     bounds: new Bounds(extent[1], extent[0], extent[3], extent[2]),
   });
