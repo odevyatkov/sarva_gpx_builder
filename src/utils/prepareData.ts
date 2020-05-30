@@ -4,12 +4,12 @@ import {
 import parsePositionFromString from '../parsers/parsePositionFromString';
 import buildExtent from './buildExtent';
 
-interface RowData {
+export interface RowData {
   center?: string;
   radius?: number;
   cell?: number;
-  leftBottom?: string;
-  rightTop?: string;
+  fromPoint?: string;
+  toPoint?: string;
 }
 
 export function getExtent(data: RowData): [number,number,number,number] {
@@ -17,15 +17,17 @@ export function getExtent(data: RowData): [number,number,number,number] {
     const centerPosition: Position = parsePositionFromString(data.center);
 
     return  buildExtent(centerPosition, data.radius);
-  } else if (data.leftBottom && data.rightTop) {
-    const leftBottomPosition: Position = parsePositionFromString(data.leftBottom);
-    const rightTopPosition: Position = parsePositionFromString(data.rightTop);
+  } else if (data.fromPoint && data.fromPoint) {
+    const {
+      minPoint,
+      maxPoint,
+    } = minMaxPoint(data.fromPoint, data.toPoint);
 
     return [
-      leftBottomPosition[0],
-      leftBottomPosition[1],
-      rightTopPosition[0],
-      rightTopPosition[1],
+      maxPoint[0],
+      maxPoint[1],
+      minPoint[0],
+      minPoint[1],
     ];
   } else {
     throw new Error('Invalid params');
@@ -37,12 +39,30 @@ export function getDefaultFileName(data: RowData): string {
     const centerPosition: Position = parsePositionFromString(data.center);
 
     return `${centerPosition[0]}_${centerPosition[1]}_${data.radius}x${data.radius}_${data.cell}.gpx`;
-  } else if (data.leftBottom && data.rightTop) {
-    const leftBottomPosition: Position = parsePositionFromString(data.leftBottom);
-    const rightTopPosition: Position = parsePositionFromString(data.rightTop);
+  } else if (data.fromPoint && data.toPoint) {
+    const {
+      minPoint,
+      maxPoint,
+    } = minMaxPoint(data.fromPoint, data.toPoint);
 
-    return `${leftBottomPosition[0]}_${leftBottomPosition[1]}_${rightTopPosition[0]}_${rightTopPosition[1]}_${data.cell}.gpx`;
+    return `${minPoint[0]}_${minPoint[1]}_${maxPoint[0]}_${maxPoint[1]}_${data.cell}.gpx`;
   } else {
     throw new Error('Invalid params');
   }
+}
+
+function minMaxPoint(firstPoint: string, secondPoint: string): {minPoint: [number, number], maxPoint: [number, number]} {
+  const firstPosition: Position = parsePositionFromString(firstPoint);
+  const secondPosition: Position = parsePositionFromString(secondPoint);
+
+  return {
+    minPoint: [
+      Math.max(firstPosition[0], secondPosition[0]),
+      Math.max(firstPosition[1], secondPosition[1]),
+    ],
+    maxPoint: [
+      Math.min(firstPosition[0], secondPosition[0]),
+      Math.min(firstPosition[1], secondPosition[1]),
+    ],
+  };
 }

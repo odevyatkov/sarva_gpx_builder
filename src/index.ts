@@ -5,6 +5,7 @@ import buildGrid from './utils/buildGrid';
 import buildGpx from './utils/buildGpx';
 import buildNamesDict from './utils/buildNamesDict';
 import {
+  RowData,
   getDefaultFileName,
   getExtent,
 } from './utils/prepareData';
@@ -12,12 +13,12 @@ import {
 const argv = require('yargs').argv;
 
 try {
-  const data = {
+  const data: RowData = {
     center: argv.center,
     radius: parseFloat(argv.radius),
     cell: parseFloat(argv.cell),
-    leftBottom: argv.leftBottom,
-    rightTop: argv.rightTop,
+    fromPoint: argv.fromPoint,
+    toPoint: argv.toPoint,
   };
   const extent: [number,number,number,number] = getExtent(data);
   const fileName: string = getDefaultFileName(data);
@@ -34,6 +35,6 @@ try {
 } catch (e) {
   console.error(e);
   console.warn('use command: npm run start -- --center=lat,lng --radius=number --cell=number');
-  console.warn('for use command: npm run start -- --leftBottom=lat,lng --rightTop=lat,lng --cell=number');
+  console.warn('for use command: npm run start -- --fromPoint=lat,lng --toPoint=lat,lng --cell=number');
   process.exit(0);
 }
