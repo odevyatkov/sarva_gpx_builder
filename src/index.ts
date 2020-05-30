@@ -21,7 +21,7 @@ try {
     toPoint: argv.toPoint,
   };
   const extent: [number,number,number,number] = getExtent(data);
-  const fileName: string = getDefaultFileName(data);
+  const fileName: string = `${argv.name || getDefaultFileName(data)}.gpx`;
 
   const grid = buildGrid(extent, data.cell);
   const nameDict: Record<'numeric'|'alphabet', Record<number, string>> = buildNamesDict(grid);

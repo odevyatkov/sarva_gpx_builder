@@ -40,14 +40,14 @@ export function getDefaultFileName(data: RowData): string {
   if (data.center && data.radius && data.cell) {
     const centerPosition: Position = parsePositionFromString(data.center);
 
-    return `${centerPosition[1]}_${centerPosition[0]}_${data.radius}x${data.radius}_${data.cell}.gpx`;
+    return `${centerPosition[1]}_${centerPosition[0]}_${data.radius}x${data.radius}_${data.cell}`;
   } else if (data.fromPoint && data.toPoint && data.cell) {
     const {
       minPoint,
       maxPoint,
     } = minMaxPoint(data.fromPoint, data.toPoint, data.cell);
 
-    return `${minPoint[1]}_${minPoint[0]}_${maxPoint[1]}_${maxPoint[0]}_${data.cell}.gpx`;
+    return `${minPoint[1]}_${minPoint[0]}_${maxPoint[1]}_${maxPoint[0]}_${data.cell}`;
   } else {
     throw new Error('Invalid params');
   }

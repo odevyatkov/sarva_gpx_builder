@@ -35,3 +35,11 @@ and cell size `1 km`
 ```sh
 npm run start -- --fromPoint=49.751952963627545,23.89238084438024 --toPoint=49.93181703637245,24.17128315561976 --cell=1
 ```
+
+## set custom file name
+
+for set custom file name use following param
+
+```sh
+--name=someMyName
+```
