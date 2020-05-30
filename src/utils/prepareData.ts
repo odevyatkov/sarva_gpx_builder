@@ -26,10 +26,10 @@ export function getExtent(data: RowData): [number,number,number,number] {
     } = minMaxPoint(data.fromPoint, data.toPoint, data.cell);
 
     return [
-      maxPoint[0],
-      maxPoint[1],
       minPoint[0],
       minPoint[1],
+      maxPoint[0],
+      maxPoint[1],
     ];
   } else {
     throw new Error('Invalid params');
