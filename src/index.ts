@@ -21,7 +21,6 @@ try {
     toPoint: argv.toPoint,
   };
   const extent: [number,number,number,number] = getExtent(data);
-  console.log(extent);
   const fileName: string = `${argv.name || getDefaultFileName(data)}.gpx`;
 
   const grid = buildGrid(extent, data.cell);
