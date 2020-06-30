@@ -1,6 +1,6 @@
 {
   "name": "sarva_gpx_builder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "gpx builder for SARVA",
   "main": "index.js",
   "scripts": {
