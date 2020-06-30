@@ -91,11 +91,11 @@ function minMaxPoint(firstPoint: string, secondPoint: string, cellSize: number):
   const maxPointFirstCoord = destination({
     type: 'Point',
     coordinates: minPoint,
-  }, firsCoordDistance, 90).geometry.coordinates;
+  }, secondCoordDistance, 90).geometry.coordinates;
   const maxPointSecondCoord = destination({
     type: 'Point',
     coordinates: minPoint,
-  }, secondCoordDistance, 0).geometry.coordinates;
+  }, firsCoordDistance, 0).geometry.coordinates;
 
   return {
     minPoint,
